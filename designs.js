@@ -28,5 +28,23 @@ function makeGrid() {
 
 sizePicker.addEventListener("submit", function(e) {
     e.preventDefault();
-    makeGrid;
+    makeGrid();
+})
+
+// Add color to grid
+
+canvas.addEventListener("click", function(e) {
+    e.preventDefault();
+    if (e.target.nodeName === "TD") {
+        e.target.style.backgroundColor = color.value;
+    }
+})
+
+// Delete color from grid with right click
+
+canvas.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+    if (e.target.nodeName === "TD") {
+        e.target.style.backgroundColor = "";
+    }
 })
