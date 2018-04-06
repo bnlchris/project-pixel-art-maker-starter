@@ -1,44 +1,32 @@
-// Select color input
+// Set variables for canvas, grid-size and color
 
-const color = document.getElementById("colorPicker");
+const canvas = document.querySelector("#pixelCanvas");
+const height = document.querySelector("#inputHeight");
+const width = document.querySelector("#inputWeight");
+const color = document.querySelector("#colorPicker");
 
-// Select size input
+// Set variable for event
 
-let height = document.getElementById("inputHeight").value;
-let width = document.getElementById("inputWeight").value;
+const sizePicker = document.querySelector("#sizePicker");
 
-// Set a variable for the canvas
-
-const canvas = document.getElementById("PixelCanvas");
-
-// When size is submitted by the user, call makeGrid()
+// code for building the grid
 
 function makeGrid() {
-
-	// clear existing canvas
-	canvas.empty();
-
-	// set variables for rows and columns
-	const newRow = "<tr></tr>";
-	const newColumn = "<td></td>";
-
-	// build rows
-	for (i = 0; i < height; i++) {
-		canvas.append(newRow);
-	};
-
-	// addlumns to rows
-	let findRow = document.querySelector("tr");
-	findRow.each(function(element) {
-		for (j = 0; j < width; j++) {
-			element.append(newColumn);
-		}
-	});
+    canvas.innerHTML = ""; //clear existing grid
+    let tr, td;
+    for (let i = 0; i < height.value; i++) {
+        tr = document.createElement("tr");
+        canvas.appendChild(tr);
+        for (let j = 0; j < width.value; j++) {
+            td = document.createElement("td");
+            tr.appendChild(td);
+        }
+    }
 }
 
-// Use makeGrid() on event "submit"
-const event = document.getElementById("sizePicker");
-event.on("submit", function(evt) {
-	makeGrid();
-	evt.preventDefault();
-});
+// Let's shoot event
+
+sizePicker.addEventListener("submit", function(e) {
+    e.preventDefault();
+    makeGrid;
+})
